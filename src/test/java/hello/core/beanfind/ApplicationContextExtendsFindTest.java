@@ -18,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ApplicationContextExtendsFindTest {
     AnnotationConfigApplicationContext ac =  new AnnotationConfigApplicationContext(TestConfig.class);
 
+    /*
+    * 이러한 테스트를 한 이유 ->  자동 의존관계 주입등의 상황에서 이것들이 주요하게 사용됨!*/
     @Test
     @DisplayName("부모타입 조회시, 자식이 둘 이상 있으면 중복오류!")
     void findBeanByParentTypeDuplicate(){
@@ -29,6 +31,12 @@ public class ApplicationContextExtendsFindTest {
         assertThrows(
                 NoUniqueBeanDefinitionException.class,
                 ()-> ac.getBean(DiscountPolicy.class));
+    }
+    @Test
+    @DisplayName("Interface의 Instance로 맞는가?")
+    void isInterfaceInstance(){
+        DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy", DiscountPolicy.class);
+        assertThat(rateDiscountPolicy).isInstanceOf(DiscountPolicy.class);
     }
 
     @Test
