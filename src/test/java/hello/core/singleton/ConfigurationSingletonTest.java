@@ -12,20 +12,20 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class ConfigurationSingletonTest {
 
-    @Test
-    void configurationTest(){
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
-
-        MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
-        OrderServiceImpl orderService = ac.getBean("orderService", OrderServiceImpl.class);
-        MemberRepository memberRepository = ac.getBean("memberRepository", MemberRepository.class);
-
-        System.out.println("memberService -> memberRepository =  " + memberService.getMemberRepository());
-        System.out.println("memberService -> orderService = " + orderService.getMemberRepository());
-        System.out.println("memberRepository = " + memberRepository);
-
-        Assertions.assertThat(memberService.getMemberRepository()).isEqualTo(orderService.getMemberRepository());
-    }
+//    @Test
+//    void configurationTest(){
+//        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+//
+//        MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
+//        OrderServiceImpl orderService = ac.getBean("orderService", OrderServiceImpl.class);
+//        MemberRepository memberRepository = ac.getBean("memberRepository", MemberRepository.class);
+//
+//        System.out.println("memberService -> memberRepository =  " + memberService.getMemberRepository());
+//        System.out.println("memberService -> orderService = " + orderService.getMemberRepository());
+//        System.out.println("memberRepository = " + memberRepository);
+//
+//        Assertions.assertThat(memberService.getMemberRepository()).isEqualTo(orderService.getMemberRepository());
+//    }
     @Test
     void configuration(){
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
