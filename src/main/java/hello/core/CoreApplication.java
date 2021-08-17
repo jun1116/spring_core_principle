@@ -1,3 +1,4 @@
+
 package hello.core;
 
 import org.springframework.boot.SpringApplication;

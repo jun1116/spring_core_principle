@@ -23,23 +23,28 @@ import org.springframework.context.annotation.Configuration;
 * 스프링 컨테이너에서 스프링빈을 찾아서 사용하도록 변경되었다.
 * */
 
-@Configuration //설정을 구성한다는 뜻의 어노테이션
+//@Configuration //설정을 구성한다는 뜻의 어노테이션
 public class AppConfig {
     @Bean // 스프링컨테이너에 스프링빈으로 등록
     public MemberService memberService(){
+        System.out.println("call memberService");
         return new MemberServiceImpl(memberRepository());
     }
     @Bean
     public MemberRepository memberRepository(){
+        System.out.println("call memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService(){
+        System.out.println("call orderService");
         return new OrderServiceImpl( memberRepository(), discountPolicy() );
     }
     @Bean
     public DiscountPolicy discountPolicy(){
+        System.out.println("call discountPolicyService");
 //        return new FixDiscountPolicy();
         return new RateDiscountPolicy();
     }
+
 }
