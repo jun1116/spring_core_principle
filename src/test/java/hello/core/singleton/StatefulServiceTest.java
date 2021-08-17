@@ -29,7 +29,7 @@ public class StatefulServiceTest {
         System.out.println("userB_price = " + userB_price);
     }
 
-//    @Configuration
+    @Configuration
     static class TestConfig {
         @Bean
         public StatefulService statefulService() {
