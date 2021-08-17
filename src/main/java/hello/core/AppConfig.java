@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
     @Bean // 스프링컨테이너에 스프링빈으로 등록
     public MemberService memberService(){
-        return new MemberServiceImpl(new MemoryMemberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
     @Bean
     public MemberRepository memberRepository(){

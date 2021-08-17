@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+
 public class BeanDefinitionTest {
 
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
