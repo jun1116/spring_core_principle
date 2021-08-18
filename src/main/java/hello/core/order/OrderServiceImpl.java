@@ -9,19 +9,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired private MemberRepository memberRepository ;
-    @Autowired private DiscountPolicy discountPolicy ;
+    private MemberRepository memberRepository ;
+    private DiscountPolicy discountPolicy ;
 
-//    @Autowired(required = false)
-//    public void setMemberRepository(MemberRepository memberRepository) {
-//        System.out.println("memberRepository = " + memberRepository);
-//        this.memberRepository = memberRepository;
-//    }
-//    @Autowired(required = false)
-//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
-//        System.out.println("discountPolicy = " + discountPolicy);
-//        this.discountPolicy = discountPolicy;
-//    }
+    @Autowired(required = false)
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
+    @Autowired(required = false)
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
     //    private final MemberRepository memberRepository ; //final이 붙어있으면, 이 값에 null이 들어갈 수 없어.
 //    private final DiscountPolicy discountPolicy ;
 
