@@ -9,28 +9,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService {
 
-//    private MemberRepository memberRepository ;
-//    private DiscountPolicy discountPolicy ;
-//
-//    @Autowired(required = false)
-//    public void setMemberRepository(MemberRepository memberRepository) {
-//        System.out.println("memberRepository = " + memberRepository);
-//        this.memberRepository = memberRepository;
-//    }
-//    @Autowired(required = false)
-//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
-//        System.out.println("discountPolicy = " + discountPolicy);
-//        this.discountPolicy = discountPolicy;
-//    }
-    private final MemberRepository memberRepository ; //final이 붙어있으면, 이 값에 null이 들어갈 수 없어.
-    private final DiscountPolicy discountPolicy ;
+    private MemberRepository memberRepository ; //final이 붙어있으면, 이 값에 null이 들어갈 수 없어.
+    private DiscountPolicy discountPolicy ;
 
-    @Autowired //생략해도 생성자가 하나일땐 이건 자동으로 오토와이어드됨
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        System.out.println("1. OrderServiceImpl");
+    //생성자주입을 선택해라
+    public void setMemberRepository(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
+    }
+
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
         this.discountPolicy = discountPolicy;
     }
+
+
+
+
+//    @Autowired //생략해도 생성자가 하나일땐 이건 자동으로 오토와이어드됨
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
 
     @Override
