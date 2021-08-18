@@ -14,9 +14,8 @@ class OrderServiceImplTest {
     void createOrder() {
         MemoryMemberRepository memberRepository = new MemoryMemberRepository();
         memberRepository.save(new Member(1L,"가짜멤버", Grade.VIP));
-
         OrderServiceImpl orderService = new OrderServiceImpl(memberRepository,new RateDiscountPolicy());
-        Order order = orderService.createOrder(1L, "가짜아이템", 10000);
-        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
+        Order order = orderService.createOrder(1L, "가짜아이템", 20000);
+        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(2000);
     }
 }
