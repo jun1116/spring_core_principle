@@ -10,9 +10,9 @@ import org.springframework.context.annotation.FilterType;
 
 @Configuration
 @ComponentScan(excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = Configuration.class))
-public class AutoAppConfig {
+public class AutoAppConfig {}
 //    @Bean(name = "memoryMemberRepository")
 //    public MemberRepository memberRepository(){
 //        return new MemoryMemberRepository();
 //    }//.BeanDefinitionOverrideException
-}
+//}
