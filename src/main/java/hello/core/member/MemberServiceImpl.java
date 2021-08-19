@@ -1,5 +1,9 @@
 package hello.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService {
     //    앞에있는건 인터페이스 , 뒤에있는건 구현체
     // 그 이유는 memberRepository가 Null Point Exception이 터져서
@@ -11,6 +15,7 @@ public class MemberServiceImpl implements MemberService {
     그것은 오직 외부(AppConfig)에서 결정
     의존관계는 외부에 맡기고, 실행에만 집중하면됨
     */
+    @Autowired //생성자에 오토와이어드를 붙여주면 여기에 의존관계 주입을 자동으로 해줌
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
