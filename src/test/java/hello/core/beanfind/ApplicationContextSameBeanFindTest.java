@@ -49,7 +49,7 @@ public class ApplicationContextSameBeanFindTest {
             System.out.println("key = " + key + "value = "+beansOfType.get(key));
         }
         System.out.println("beansOfType = " + beansOfType);
-        assertThat(beansOfType.size()).isEqualTo(2);
+        assertThat(beansOfType.size()).isEqualTo(3);
     }
 
     @Test
