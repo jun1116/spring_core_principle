@@ -17,7 +17,7 @@ public class OrderServiceImpl implements OrderService {
 
 ///*  Lombok의 @RequiredArgsConstructor 적용으로, 생성자 안써도 자동으로생겨!
     @Autowired //생략해도 생성자가 하나일땐 이건 자동으로 오토와이어드됨
-    public OrderServiceImpl(MemberRepository memberRepository,@Qualifier("mainDiscountPolicy") DiscountPolicy rateDiscountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy rateDiscountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = rateDiscountPolicy;
     } //*/
