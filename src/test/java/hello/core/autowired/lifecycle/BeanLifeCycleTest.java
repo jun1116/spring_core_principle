@@ -18,7 +18,7 @@ public class BeanLifeCycleTest {
         @Bean
         public NetworkClient networkClient(){
             NetworkClient networkClient = new NetworkClient();
-            networkClient.setUrl("Spring__url.rurlrlrrjfl");
+            networkClient.setUrl("IN CONFIG :: Spring__url.rurlrlrrjfl");
             return networkClient;
         }
     }
