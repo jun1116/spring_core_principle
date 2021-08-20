@@ -2,6 +2,9 @@ package hello.core.autowired.lifecycle;
 
 import org.springframework.context.annotation.Bean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class NetworkClient{
     private String url;
     public NetworkClient() {
@@ -12,10 +15,10 @@ public class NetworkClient{
     public void connect(){System.out.println("Connect : " + url);}
     public void call(String message){System.out.println("call :  " + url+",  message : "+message);}
     public void disConnect(){System.out.println("Close : " + url);}
-    public void init() {
+    @PostConstruct public void init() {
         connect();
         call("init() 통한 초기화 연결메시지");}
-    public void close() {
+    @PreDestroy public void close() {
         System.out.println("close() 을 통한 종료");
         disConnect();}
 }
