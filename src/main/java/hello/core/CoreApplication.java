@@ -13,5 +13,6 @@ import org.springframework.stereotype.Service;
 public class CoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CoreApplication.class, args);
+		System.out.println("2021-08-24 1차 완강 끝");
 	}
 }
