@@ -8,6 +8,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Scope;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SingletonWithPrototypeTest1 {
@@ -27,11 +29,11 @@ public class SingletonWithPrototypeTest1 {
 
     static class ClientBean{
         @Autowired
-        private ObjectProvider<PrototypeBean> prototypeBeanObjectProvider;
+        private Provider<PrototypeBean> prototypeBeanObjectProvider;
 //        아래 팩토리를 사용해도 괜찮아
 //        private ObjectFactory<PrototypeBean> prototypeBeanObjectFactory;
         public int logic(){// 더하고, 꺼내서 반환
-            PrototypeBean prototypeBean = prototypeBeanObjectProvider.getObject();
+            PrototypeBean prototypeBean = prototypeBeanObjectProvider.get();
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;
