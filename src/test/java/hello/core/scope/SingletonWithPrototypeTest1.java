@@ -1,6 +1,7 @@
 package hello.core.scope;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -23,11 +24,14 @@ public class SingletonWithPrototypeTest1 {
         assertThat(count2).isEqualTo(1);
         System.out.println("count2 = " + count2);
     }
+
     static class ClientBean{
         @Autowired
-        private ApplicationContext ac;
+        private ObjectProvider<PrototypeBean> prototypeBeanObjectProvider;
+//        아래 팩토리를 사용해도 괜찮아
+//        private ObjectFactory<PrototypeBean> prototypeBeanObjectFactory;
         public int logic(){// 더하고, 꺼내서 반환
-            PrototypeBean prototypeBean = ac.getBean(PrototypeBean.class);
+            PrototypeBean prototypeBean = prototypeBeanObjectProvider.getObject();
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;
