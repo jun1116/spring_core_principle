@@ -1,6 +1,7 @@
 package hello.core.common;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -8,8 +9,10 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.UUID;
 
+//request가 들어왔을 때 생성되는 스코프를 가졌어
+//적용대상이 클래스이면 TARGET_CLASS를 선택, 인터페이스라면 INTERFACES를 선택 -> MyLogger의 가짜 프록시 클래스를 만들어두고, HTTP request와 상관없이 가짜 프록시클래스를 다른 빈에 미리 주입해 둘 수 있다.
+@Scope(value="request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Component
-@Scope(value="request")//request가 들어왔을 때 생성되는 스코프를 가졌어
 public class MyLogger {
     private String uuid;
     private String requestURL;

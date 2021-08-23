@@ -14,16 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class LogDemoController {
     private final LogDemoService logDemoService; //@Autowired 가 붙어있는것과 같음
-    private final ObjectProvider<MyLogger> myLoggerProvider; //MyLogger를 주입받는게 아니라, 그걸 찾을 수 있는 DL이 주입된다 -> 주입시점에 주입받을 수 있다
+    private final MyLogger myLogger;
+//    private final ObjectProvider<MyLogger> myLoggerProvider; //MyLogger를 주입받는게 아니라, 그걸 찾을 수 있는 DL이 주입된다 -> 주입시점에 주입받을 수 있다
 
     @RequestMapping("log-demo")
     @ResponseBody
-    public String logDemo(HttpServletRequest request) throws InterruptedException {
+    public String logDemo(HttpServletRequest request){
         String requestURL = request.getRequestURL().toString();
-        MyLogger myLogger = myLoggerProvider.getObject();
+//        MyLogger myLogger = myLoggerProvider.getObject();
+        System.out.println("myLogger = " + myLogger.getClass());
         myLogger.setRequestURL(requestURL);
+
         myLogger.log("Controller Test");
-        Thread.sleep(1500);
         logDemoService.logic("TestId");
         return "OK";
     }
